@@ -6,8 +6,6 @@
 </template>
   
 <script>
-import vue from vue;
-
 export default {
     props: {
         project: {
