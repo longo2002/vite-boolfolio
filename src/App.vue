@@ -1,35 +1,19 @@
 <template>
-  <div class="app">
-    <h1>Progetti</h1>
-    <div v-if="loading">Caricamento...</div>
-    <div v-else>
-      <project-card v-for="project in projects" :key="project.id" :project="project" />
-    </div>
+  <div class="container">
+    <router-link to="/">Home</router-link>
+    <router-link to="/about">About</router-link>
+    <router-link to="/portfolio">Portfolio</router-link>
   </div>
+  <router-view></router-view>
 </template>
 
 <script>
-import axios from "axios";
-import ProjectCard from "./components/ProjectCard.vue";
 
-export default {
-  components: {
-    ProjectCard,
-  },
-  data() {
-    return {
-      projects: [],
-      loading: true,
-    };
-  },
-  async created() {
-    try {
-      const response = await axios.get("http://localhost:8000/api/projects");
-      this.projects = response.data;
-      this.loading = false;
-    } catch (error) {
-      console.error(error);
-    }
-  },
-};
 </script>
+
+<style scoped>
+.container {
+  display: flex;
+  gap: 5px;
+}
+</style>
