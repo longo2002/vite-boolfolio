@@ -3,18 +3,19 @@
     <h1>Progetti</h1>
     <div v-if="loading">Caricamento...</div>
     <div v-else>
-      <div v-for="project in projects" :key="project.id">
-        <h2>{{ project.name }}</h2>
-        <p>{{ project.description }}</p>
-      </div>
+      <project-card v-for="project in projects" :key="project.id" :project="project" />
     </div>
   </div>
 </template>
 
 <script>
 import axios from "axios";
+import ProjectCard from "./components/ProjectCard.vue";
 
 export default {
+  components: {
+    ProjectCard,
+  },
   data() {
     return {
       projects: [],
